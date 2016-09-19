@@ -42,3 +42,8 @@ this.setState({
 newTaskDescription: event.target.value});
 },
 ```js
+
+##Storytelling my pseudo code AKA gameplan
+1. Make a variable Todo, set state/condition, make a schema of what the object should encapsulate (its id, task description, is it completed?)
+2. Make a component to render the HTML: form with function to add task, use state (source of data) to pull task descriptions, make event listener for when tasks change
+3. Use high order function, map, to increment through tasks
