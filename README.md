@@ -41,7 +41,7 @@ For example, for the ToDo list, if I have states that collect data for taskdescr
 this.setState({
 newTaskDescription: event.target.value});
 },
-```js
+```
 
 ##Storytelling my pseudo code AKA gameplan
 1. Make a variable Todo, set state/condition, make a schema of what the object should encapsulate (its id, task description, is it completed?)
