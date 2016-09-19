@@ -13,7 +13,7 @@ From a quick search, seems like the foundations are:
 > The main difference between state and props is that props are immutable. This is why container component should define state that can be updated and changed, while the child components should only pass data from the state using props.
 [Tutorialspoint](https://www.tutorialspoint.com/reactjs/reactjs_props_overview.htm)
 
-##Misc. Notes:
+##Research Notes:
 * ReactDOM is a compiler engine
 * Just as everything in HTML is composed of elements, everything in React is composed of components
 * Any HTML in parenthesis() gets converted to JS
@@ -30,3 +30,15 @@ this.name = "phamous2day";
 
 * State only gets used if a component has a internal value that only affects that component and DOESN'T AFFECT the rest of the app
 * Props are injected into nearly every other component
+
+
+##Obstacles
+I'm having a tough time fully understanding "state" and "props." I know props is immutable, but my confusion comes from knowing when to use them. In some example code, I see state scattered everywhere. I'm thinking the closest thing it resembles is how $scope looks in AngularJS. I guess for every component that references states (source of data) needed for function, then use the referenced state.
+
+For example, for the ToDo list, if I have states that collect data for taskdescriptions which I want to reference in another component that deals with *when* the descriptions actually change, I'll use something like:
+
+```js
+this.setState({
+newTaskDescription: event.target.value});
+},
+```js
