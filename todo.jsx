@@ -5,8 +5,8 @@ var TodoList = React.createClass({
 
       //creating some placeholder info as  test
       tasks: [
-        { id: 1, name: 'loadup furniture'},
-        { id: 2, name: 'make todo list' }
+        { id: 1, name: 'loadup furniture', complete: false},
+        { id: 2, name: 'make todo list', complete: true }
       ],
 
 
@@ -32,9 +32,12 @@ var TodoList = React.createClass({
 
             //think of key as hash tables/dictionary as a way to retrieve/organize information by id
 
-              <li key={task.id}>
-                {task.name}
-              </li>
+            <li key={task.id} className={task.complete ? 'complete' : ''}>
+              <input type="checkbox" checked={task.complete}
+              onChange={this.completeTask.bind(this, task)}
+              />
+              {task.name}
+            </li>
             );
           }.bind(this))}
         </ul>
@@ -49,15 +52,22 @@ var TodoList = React.createClass({
 
 
   addTask: function(event) {
+  event.preventDefault();
     var newItem = {
       id: this.state.nextId,
-      name: this.state.newTaskDescription
+      name: this.state.newTaskDescription, complete: false
     };
     this.setState({
       tasks: this.state.tasks.concat(newItem),
       nextId: this.state.nextId + 1,
       newTaskDescription: ''
     })
+  },
+  completeTask: function(task, event){
+  task.complete = event.target.checked;
+  this.setState({
+  tasks: this.state.tasks
+  });
   }
 });
 
