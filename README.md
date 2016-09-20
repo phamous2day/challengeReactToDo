@@ -33,7 +33,9 @@ this.name = "phamous2day";
 
 
 ##Obstacles
-I'm having a tough time fully understanding "state" and "props." I know props is immutable, but my confusion comes from knowing when to use them. In some example code, I see state scattered everywhere. I'm thinking the closest thing it resembles is how $scope looks in AngularJS. I guess for every component that references states (source of data) needed for function, then use the referenced state.
+*Differences between state and properties (props)*
+
+I know props is immutable, but my confusion comes from knowing when to use them. In some example code, I see state scattered everywhere. I'm thinking the closest thing it resembles is how $scope looks in AngularJS. I guess for every component that references states (source of data) needed for function, then use the referenced state.
 
 For example, for the ToDo list, if I have states that collect data for taskdescriptions which I want to reference in another component that deals with *when* the descriptions actually change, I'll use something like:
 
@@ -42,6 +44,7 @@ this.setState({
 newTaskDescription: event.target.value});
 },
 ```
+*Solution*
 This helps me understand the differences between *properties and state*
 #### Changing _props_ and _state_
 
@@ -55,6 +58,27 @@ Can set initial value for child Components? | Yes | Yes
 Can change in child Components? | Yes | No
 
 [Chart source](https://github.com/uberVU/react-guide/blob/master/props-vs-state.md)
+
+*Tasks keep going away*
+In the addTask component, I originally had it like this:
+```js
+addTask: function(event) {
+    var newItem = {
+      id: this.state.nextId,
+      name: this.state.newTaskDescription, complete: false
+    };
+    this.setState({
+      tasks: this.state.tasks.concat(newItem),
+      nextId: this.state.nextId + 1,
+      newTaskDescription: ''
+    })
+},
+```
+When adding new tasks, the new tasks would go away and not be bound to the page. It was as if the page "refreshed." Which is exactly what happens known as browser POST behavior (when you press a button, it posts the information away). To override that behavior, had to stick:
+```js
+  event.preventDefault();
+  ```
+  into the addTask function, so that when the form is submmited, it'll call the addTask, and bind the new tasks as into an Object within the "tasks" array.
 
 ##Main Components
 1. The main todo app
