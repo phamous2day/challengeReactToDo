@@ -42,8 +42,23 @@ this.setState({
 newTaskDescription: event.target.value});
 },
 ```
+This helps me understand the differences between *properties and state*
+#### Changing _props_ and _state_
 
-##Storytelling my pseudo code AKA gameplan
-1. Make a variable Todo, set state/condition, make a schema of what the object should encapsulate (its id, task description, is it completed?)
-2. Make a component to render the HTML: form with function to add task, use state (source of data) to pull task descriptions, make event listener for when tasks change
-3. Use high order function, map, to increment through tasks
+- | _props_ | _state_ | 
+--- | --- | --- 
+Can get initial value from parent Component? | Yes | Yes
+Can be changed by parent Component? | Yes | No
+Can set default values inside Component?* | Yes | Yes
+Can change inside Component? | No | Yes
+Can set initial value for child Components? | Yes | Yes
+Can change in child Components? | Yes | No
+
+[Chart source](https://github.com/uberVU/react-guide/blob/master/props-vs-state.md)
+
+##Main Components
+1. The main todo app
+2. The task descriptions
+3. The checkboxes to mark them as completed
+
+
