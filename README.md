@@ -1,6 +1,8 @@
 # challengeReactToDo
 Coding Challenge for LoadUp to make a To Do List using React
 
+![picture](loadup.png)
+
 ##My approach
 I'm going to do some research on the essentials that make up React. As I build the todo app, I'll be documenting each component detailing what they do for the sake of reference and replication in the future.
 
